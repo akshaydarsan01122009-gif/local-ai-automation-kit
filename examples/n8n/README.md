@@ -8,7 +8,9 @@ This folder contains reusable n8n automation examples for Local AI Automation Ki
 
 This workflow was tested with n8n and a local Ollama model. It uses:
 
-`Manual Trigger → Message a model → llama3.2:3b`
+`Manual Trigger → Edit Fields → Message a model → llama3.2:3b`
+
+The **Edit Fields** node contains a starter prompt. The **Message a model** node reads that prompt dynamically, so you can change the prompt without editing the model node.
 
 ### Import
 
@@ -18,7 +20,8 @@ This workflow was tested with n8n and a local Ollama model. It uses:
 4. Open the **Message a model** node.
 5. Select your own **Ollama API** credential.
 6. Make sure the model `llama3.2:3b` is available in your Ollama installation.
-7. Execute the workflow.
+7. Open **Edit Fields** and change the **Prompt** value if you want.
+8. Execute the workflow.
 
 ### Important
 
