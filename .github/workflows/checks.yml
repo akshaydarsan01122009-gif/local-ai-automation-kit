@@ -7,14 +7,22 @@ on:
     branches: [main]
 
 jobs:
-  documentation-check:
+  project-checks:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Check required documentation
         run: |
           test -f README.md
           test -f LICENSE
           test -f CONTRIBUTING.md
           test -f SECURITY.md
-          echo "Documentation files are present."
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run tests
+        run: python -m unittest discover -s tests
