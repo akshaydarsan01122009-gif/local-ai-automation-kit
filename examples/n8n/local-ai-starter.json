@@ -14,6 +14,30 @@
     },
     {
       "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "25a046c5-7c0f-4398-95e7-25cf69af8e2d",
+              "name": "Prompt",
+              "value": "Give me 3 beginner-friendly uses for local AI.",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        224,
+        0
+      ],
+      "id": "e65924dd-317f-490d-8419-711e5ca8fb41",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
         "modelId": {
           "__rl": true,
           "value": "llama3.2:3b",
@@ -23,7 +47,7 @@
         "messages": {
           "values": [
             {
-              "content": "Say hello and explain in one sentence that you are running locally."
+              "content": "={{ $json.Prompt }}"
             }
           ]
         },
@@ -32,7 +56,7 @@
       "type": "@n8n/n8n-nodes-langchain.ollama",
       "typeVersion": 1,
       "position": [
-        224,
+        448,
         0
       ],
       "id": "780647a9-4ccb-411b-a529-548e7e01c8ff",
@@ -42,6 +66,17 @@
   "pinData": {},
   "connections": {
     "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
       "main": [
         [
           {
